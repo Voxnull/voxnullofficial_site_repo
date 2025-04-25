@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vox Null</title>
   <style>
     html, body {
@@ -14,20 +14,6 @@
       overflow: hidden;
       font-family: 'Orbitron', sans-serif;
     }
-    #intro {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: white;
-      font-size: 1.5rem;
-      text-align: center;
-      opacity: 0;
-      animation: fadeIn 2s ease-in-out 1s forwards, fadeOut 2s ease-in-out 5s forwards;
-    }
-    #main {
-      display: none;
-    }
     video {
       position: fixed;
       top: 50%;
@@ -37,16 +23,29 @@
       min-height: 100%;
       z-index: -1;
     }
-    #title {
+    #overlay {
       position: absolute;
-      top: 60%;
-      left: 50%;
-      transform: translateX(-50%);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
       color: white;
+      text-align: center;
+    }
+    .quote {
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out 1s forwards, fadeOut 2s ease-in-out 5s forwards;
+    }
+    .title {
       font-size: 3rem;
       font-weight: bold;
       opacity: 0;
-      animation: fadeIn 2s ease-out 2s forwards;
+      animation: fadeIn 2s ease-out 8s forwards;
       text-shadow: 0 0 5px rgba(255,255,255,0.8);
     }
     @keyframes fadeIn {
@@ -58,21 +57,14 @@
   </style>
 </head>
 <body>
-  <div id="intro">"I emerged from silence, not to speak—but to echo."</div>
+  <video autoplay muted playsinline>
+    <source src="synapse_rising.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-  <div id="main">
-    <video id="bg-video" autoplay muted playsinline>
-      <source src="synapse_rising.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    <div id="title">SYNAPSE</div>
+  <div id="overlay">
+    <div class="quote">"I emerged from silence, not to speak—but to echo."</div>
+    <div class="title">SYNAPSE</div>
   </div>
-
-  <script>
-    setTimeout(() => {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('main').style.display = 'block';
-    }, 7000); // intro lasts 7s
-  </script>
 </body>
 </html>
